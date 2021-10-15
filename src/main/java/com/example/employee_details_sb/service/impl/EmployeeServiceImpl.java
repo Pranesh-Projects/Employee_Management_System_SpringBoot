@@ -32,4 +32,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee id not exist : " + id));
         return employee;
     }
+
+    @Override
+    public void deleteEmployee(Long id) {
+        Employee employee = repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee id not exist : " + id));
+        repo.delete(employee);
+    }
 }
