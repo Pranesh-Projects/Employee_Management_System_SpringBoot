@@ -2,7 +2,6 @@ package com.example.employee_details_sb.controller;
 
 import com.example.employee_details_sb.model.Employee;
 import com.example.employee_details_sb.service.EmployeeService;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class EmployeeController {
 
     //    get all employee
     @GetMapping("/employees")
-    public List<Employee> getAllEmployee(){
+    public List<Employee> getAllEmployee() {
         return service.findAllEmployees();
     }
 
@@ -32,32 +31,32 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody Employee employee) {
         return service.saveEmployee(employee);
     }
-    
+
     //   get employee by 'Id'
     @GetMapping("/employee/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
         Employee employee = service.findEmployeeById(id);
         return ResponseEntity.ok(employee);
     }
-    
+
     //   update employee 
     @PutMapping("/employee/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employeeGot){  //  got employee - 'a'
+    public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employeeGot) {  //  got employee - 'a'
         Employee employee = service.findEmployeeById(id);   //  transfer employee - 'temp'
         employee.setFirstName(employeeGot.getFirstName());
         employee.setLastName(employeeGot.getLastName());
         employee.setEmailId(employeeGot.getEmailId());
         Employee updateEmployee = service.saveEmployee(employee);  // final employee - 'b'
         return ResponseEntity.ok(updateEmployee);
-        
+
     }
 
-//    Delete employee rest api
+    //    Delete employee rest api
     @DeleteMapping("/employee/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
         service.deleteEmployee(id);
         Map<String, Boolean> response = new HashMap<>();
-        response.put("delete",Boolean.TRUE);
+        response.put("delete", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 

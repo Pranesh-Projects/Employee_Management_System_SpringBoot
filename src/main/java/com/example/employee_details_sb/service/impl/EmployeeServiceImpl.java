@@ -22,15 +22,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         return repo.findAll();
     }
 
-	@Override
-	public Employee saveEmployee(Employee employee) {
-		return repo.save(employee);
-	}
+    @Override
+    public Employee saveEmployee(Employee employee) {
+        return repo.save(employee);
+    }
 
     @Override
     public Employee findEmployeeById(long id) {
-        Employee employee = repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee id not exist : " + id));
-        return employee;
+        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee id not exist : " + id));
     }
 
     @Override

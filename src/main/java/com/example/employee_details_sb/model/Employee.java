@@ -17,18 +17,18 @@ public class Employee {
     @Column(name = "email")
     private String emailId;
 
-//    constructor without 'id'
+    //    constructor without 'id'
     public Employee(String firstName, String lastName, String emailId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
     }
 
-//    default constructor
+    //    default constructor
     public Employee() {
     }
 
-//    getter and setter
+    //    getter and setter
     public long getId() {
         return id;
     }
